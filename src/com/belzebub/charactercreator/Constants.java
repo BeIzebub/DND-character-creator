@@ -1,8 +1,13 @@
+package com.belzebub.charactercreator;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Constants {
 
+    /**
+     * Stat names
+     */
     public static final String STR = "strength";
     public static final String DEX = "dexterity";
     public static final String CON = "constitution";
@@ -10,6 +15,9 @@ public class Constants {
     public static final String WIS = "wisdom";
     public static final String CHA = "charisma";
 
+    /**
+     * Skill names
+     */
     public static final String ATHLETICS = "ATHLETICS";
 
     public static final String ACROBATICS = "ACROBATICS";
@@ -33,6 +41,9 @@ public class Constants {
     public static final String PERFORMANCE = "PERFORMANCE";
     public static final String PERSUASION = "PERSUASION";
 
+    /**
+     * Maps the skill with corresponding stat
+     */
     public static final Map<String, String> skillMap = new HashMap<>();
     static {
         skillMap.put(ATHLETICS, STR);
@@ -55,6 +66,7 @@ public class Constants {
         skillMap.put(PERSUASION, CHA);
     }
 
+    // TODO: 15-Sep-18 DELET DIS
 //    private static final String[] allSkills = new String[]{
 //            ATHLETICS,
 //

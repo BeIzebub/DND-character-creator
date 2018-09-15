@@ -1,3 +1,8 @@
+package com.belzebub.charactercreator;
+
+import com.belzebub.charactercreator.races.MountainDwarf;
+import com.belzebub.charactercreator.races.Race;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,13 +28,17 @@ public class Character {
 
     private List<String> skills = new ArrayList<>();
 
+    // TODO: 15-Sep-18 this is harcoded for now
     Character(){
-        stats.put(Constants.STR, 16);
-        stats.put(Constants.DEX, 9);
-        stats.put(Constants.CON, 14);
-        stats.put(Constants.INT, 12);
-        stats.put(Constants.WIS, 12);
-        stats.put(Constants.CHA, 14);
+        race = new MountainDwarf();
+        proficiency = getProficiencyFromLevel(5);
+
+        stats.put(Constants.STR, 16 + race.modifiers().getOrDefault(Constants.STR, 0));
+        stats.put(Constants.DEX, 8 + race.modifiers().getOrDefault(Constants.DEX, 0));
+        stats.put(Constants.CON, 14 + race.modifiers().getOrDefault(Constants.CON, 0));
+        stats.put(Constants.INT, 12 + race.modifiers().getOrDefault(Constants.INT, 0));
+        stats.put(Constants.WIS, 12 + race.modifiers().getOrDefault(Constants.WIS, 0));
+        stats.put(Constants.CHA, 14 + race.modifiers().getOrDefault(Constants.CHA, 0));
 
         skills.add(Constants.ARCANA);
         skills.add(Constants.HISTORY);
@@ -62,6 +71,24 @@ public class Character {
         }
         else{
             return (temp - 1) / 2;
+        }
+    }
+
+    private int getProficiencyFromLevel(int level) {
+        if (level < 5) {
+            return 2;
+        }
+        else if (level < 9){
+            return 3;
+        }
+        else if (level < 13){
+            return 4;
+        }
+        else if (level < 17){
+            return 5;
+        }
+        else {
+            return 6;
         }
     }
 }
